@@ -10,6 +10,7 @@ Setup on Linode:
 - python3 -m venv env 
 - pip install flask
 - you will also have to run `sudo apt-get install libgl1-mesa-glx` to have the necessary graphics drivers
+- pip install wheel
 - Install all dependencies at and verify that GFPGAN works: https://github.com/TencentARC/GFPGAN
 - Note: on Linode you may need to install pytorch before basicsr
   - pip install torch
