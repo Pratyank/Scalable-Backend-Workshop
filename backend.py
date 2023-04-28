@@ -24,10 +24,10 @@ def improve_img():
 
 ### endpoints 
 
-@app.route('/', methods=['POST'])
+# todo: what decorator goes here?
 def upload_img():
 
-    file = request.files['upload']
+    file = pass # todo: what goes here?
 
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
     extention = file.filename.split(".")[-1]
@@ -42,7 +42,7 @@ def upload_img():
     blob = bucket.blob(id)
     blob.upload_from_filename(file_name)
 
-    improve_img()
+    # todo: do we need to call anything?
 
     blob = bucket.blob("new_"+id)
     new_file_name = os.path.join("RESULTS","restored_imgs",file.name+"."+extention) 
@@ -54,9 +54,9 @@ def upload_img():
     return id
 
 
-@app.route('/processed', methods=['GET'])
+@app.route() # todo: what goes here?
 def get_new_img():
-    id = request.form['id']
+    id = pass # and here
     blob = bucket.get_blob('new_'+id)
 
     if blob is not None:
