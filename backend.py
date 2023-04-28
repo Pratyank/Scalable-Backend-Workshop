@@ -1,10 +1,11 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, send_from_directory
 from firebase_admin import credentials, initialize_app, storage
 import os
 import subprocess
 import io
 
 app = Flask(__name__)
+app.debug = True
 
 # Initialize Firebase
 cred = credentials.Certificate("firebase/serviceAccountKey.json")
@@ -22,11 +23,6 @@ def improve_img():
     stdout, stderr = process.communicate()
 
 ### endpoints 
-
-@app.route('/', methods=['GET'])
-def home(): # put the home page here
-    return 'Hello, World!'
-
 
 @app.route('/', methods=['POST'])
 def upload_img():
