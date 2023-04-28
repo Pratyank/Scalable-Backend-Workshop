@@ -21,4 +21,4 @@ Setup on Linode:
 Run backend:
 - export FLASK_APP=backend
 - export FLASK_ENV=development
-- flask run
+- flask run (before you do this make sure you have the `serviceAccountKey.json` in a `firebase/` directory under repo
