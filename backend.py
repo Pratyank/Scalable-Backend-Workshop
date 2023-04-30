@@ -54,15 +54,21 @@ def upload_img():
     return id
 
 
-@app.route() # todo: what goes here?
+# todo: what goes here?
 def get_new_img():
-    id = pass # and here
+    id = # todo: and here?
     blob = bucket.get_blob('new_'+id)
 
     if blob is not None:
         image_data = blob.download_as_bytes()
-        return send_file(io.BytesIO(image_data), attachment_filename=blob.name+"."+\
-        blob.content_type.split("/")[-1], mimetype=blob.content_type, as_attachment=True)
+        content_type = blob.content_type
+
+        return send_file(
+            io.BytesIO(image_data),
+            mimetype=blob.content_type, 
+            download_name=blob.name+"."+blob.content_type.split("/")[-1],
+            as_attachment=True
+            )
 
     else:
         return f'Error: Blob {blob_id} not found'
